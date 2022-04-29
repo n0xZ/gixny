@@ -1,5 +1,6 @@
 <script setup lang="ts">
 	import NavLink from '../NavLink/index.vue';
+	import NavItems from '../NavItem/NavItems.vue';
 </script>
 
 <template>
@@ -10,14 +11,8 @@
 			<h1>
 				<NavLink :href="'/'">Home</NavLink>
 			</h1>
-			<ul class="flex flex-row items-center">
-				<li class="mx-2">
-					<NavLink :href="'/register'">Crear usuario</NavLink>
-				</li>
-				<li class="mx-2">
-					<NavLink :href="'/login'">Iniciar sesión</NavLink>
-				</li>
-			</ul>
+
+			<NavItems />
 		</nav>
 	</header>
 </template>
