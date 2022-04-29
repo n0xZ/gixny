@@ -14,7 +14,7 @@
 		validationSchema: toFormValidator(loginSchema),
 	});
 	const onSubmit = handleSubmit(async (values) => {
-		await store.login(values);
+		await store.signIn(values);
 	});
 </script>
 
