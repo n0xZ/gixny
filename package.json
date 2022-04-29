@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.6.0",
     "@supabase/supabase-js": "^1.35.2",
     "@vee-validate/zod": "^4.5.11",
     "autoprefixer": "^10.4.5",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",
+    "@vue/test-utils": "^2.0.0-rc.21",
     "typescript": "^4.5.4",
     "vite": "^2.9.5",
     "vitest": "^0.10.0",
