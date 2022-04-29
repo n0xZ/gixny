@@ -1,6 +1,6 @@
 <script setup lang="ts">
-	import type { Login } from '../../types';
 	import { useField } from 'vee-validate';
+	import type { Login } from '../../types';
 	type InputType = 'text' | 'password';
 	type InputName = keyof Login;
 
