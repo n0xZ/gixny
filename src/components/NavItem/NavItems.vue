@@ -16,7 +16,7 @@
 	</ul>
 	<ul class="flex flex-row items-center" v-if="store.user">
 		<li class="mx-2">
-			<NavLink href="/signup"> Mi perfíl</NavLink>
+			<NavLink href="/profile"> Mi perfíl</NavLink>
 		</li>
 		<li>
 			<button
