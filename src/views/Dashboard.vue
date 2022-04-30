@@ -6,5 +6,6 @@
 <template>
 	<section>
 		<h1>Bienvenido, {{ loggedUser?.email }}</h1>
+		<p>Que desea realizar hoy?</p>
 	</section>
 </template>
