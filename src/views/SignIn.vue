@@ -1,7 +1,7 @@
 <script setup lang="ts">
 	import { useForm } from 'vee-validate';
 	import { toFormValidator } from '@vee-validate/zod';
-	
+	import { useToast } from 'vue-toastification';
 	import NavLink from '../components/NavLink/index.vue';
 	import FormField from '../components/Form/FormField.vue';
 	import { useAuthStore } from '@/store/index';
@@ -9,12 +9,17 @@
 	import type { Login } from '../types';
 
 	const store = useAuthStore();
-
+	const toast = useToast();
 	const { errors, handleSubmit } = useForm<Login>({
 		validationSchema: toFormValidator(loginSchema),
 	});
 	const onSubmit = handleSubmit(async (values) => {
 		await store.signIn(values);
+		if (store.error?.status === 400) {
+			toast.error(
+				'Credenciales incorrectas. Ingrese nuevamente.'
+			);
+		}
 	});
 </script>
 
