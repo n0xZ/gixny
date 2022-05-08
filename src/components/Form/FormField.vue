@@ -1,8 +1,8 @@
 <script setup lang="ts">
 	import { useField } from 'vee-validate';
-	import type { Login } from '../../types';
+	import type { Credentials, TaskFormValues } from '../../types';
 	type InputType = 'text' | 'password';
-	type InputName = keyof Login;
+	type InputName = keyof Credentials | keyof TaskFormValues;
 
 	interface FormFieldProps {
 		label: string;
@@ -20,9 +20,7 @@
 	<aside class="flex flex-col">
 		<label class="mb-2">{{ label }}</label>
 		<input
-			:autocomplete="
-				type === 'password' ? 'new-password' : 'email'
-			"
+			:autocomplete="type === 'password' ? 'new-password' : 'email'"
 			:name="name"
 			class="w-full p-4 pr-12 text-sm border-zinc-600 rounded-lg shadow-sm"
 			:type="type"

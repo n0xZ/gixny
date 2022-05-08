@@ -7,13 +7,13 @@
 	import FormField from '../components/Form/FormField.vue';
 	import { useAuthStore } from '@/store/index';
 	import { loginSchema } from '@/utils/zod';
-	import type { Login } from '../types';
+	import type { Credentials } from '../types';
 
 	const title = useTitle();
 	title.value = 'Gixny - Iniciar sesión';
 	const store = useAuthStore();
 	const toast = useToast();
-	const { errors, handleSubmit, isSubmitting } = useForm<Login>({
+	const { errors, handleSubmit, isSubmitting } = useForm<Credentials>({
 		validationSchema: toFormValidator(loginSchema),
 	});
 	const onSubmit = handleSubmit(async (values) => {
