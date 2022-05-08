@@ -1,5 +1,6 @@
 <script setup lang="ts">
 	import { useForm } from 'vee-validate';
+	import { useTitle } from '@vueuse/core';
 	import { toFormValidator } from '@vee-validate/zod';
 	import { useToast } from 'vue-toastification';
 	import NavLink from '../components/NavLink/index.vue';
@@ -8,6 +9,8 @@
 	import { loginSchema } from '@/utils/zod';
 	import type { Credentials } from '../types';
 
+	const title = useTitle();
+	title.value = 'Gixny - Iniciar sesión';
 	const store = useAuthStore();
 	const toast = useToast();
 	const { errors, handleSubmit } = useForm<Credentials>({
@@ -22,7 +25,7 @@
 </script>
 
 <template>
-	<section class="container mx-auto max-w-4xl">
+	<section class="container mx-auto max-w-4xl mt-7">
 		<h1 class="text-center text-2xl">Iniciar sesión</h1>
 		<form @submit="onSubmit">
 			<FormField
@@ -39,13 +42,16 @@
 				:placeholder="'Por ej... lacontraseñadepepito123*'"
 				:error="errors.password"
 			/>
-			<button type="submit" class="px-5 py-3 rounded-md bg-zinc-900 text-white">
+			<p class="mb-5">
+				No posee cuenta?
+				<NavLink href="/signup">Regístrese aquí</NavLink>
+			</p>
+			<button
+				type="submit"
+				class="px-5 py-3 w-full rounded-md bg-zinc-900 text-white"
+			>
 				Iniciar sesión
 			</button>
 		</form>
-		<p>
-			No posee cuenta?
-			<NavLink href="/signup">Regístrese aquí</NavLink>
-		</p>
 	</section>
 </template>

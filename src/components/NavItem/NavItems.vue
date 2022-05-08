@@ -6,16 +6,22 @@
 </script>
 
 <template>
-	<ul class="flex flex-row items-center" v-if="!store.user">
-		<li class="mx-2">
+	<ul
+		class="flex flex-row items-center space-x-5"
+		v-if="!store.user"
+	>
+		<li>
 			<NavLink href="/signup">Crear usuario</NavLink>
 		</li>
-		<li class="mx-2">
+		<li>
 			<NavLink href="/signin">Iniciar sesión</NavLink>
 		</li>
 	</ul>
-	<ul class="flex flex-row items-center" v-if="store.user">
-		<li class="mx-2">
+	<ul
+		class="flex flex-row items-center space-x-5"
+		v-if="store.user"
+	>
+		<li>
 			<NavLink href="/profile"> Mi perfíl</NavLink>
 		</li>
 		<li>

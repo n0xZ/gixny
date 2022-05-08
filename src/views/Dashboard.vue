@@ -1,6 +1,9 @@
 <script setup lang="ts">
+	import { useTitle } from '@vueuse/core';
 	import { useAuthStore } from '../store';
 	const loggedUser = useAuthStore().user;
+	const title = useTitle();
+	title.value = 'Gixny - Dashboard';
 </script>
 
 <template>
