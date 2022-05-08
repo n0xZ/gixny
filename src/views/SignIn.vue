@@ -13,11 +13,12 @@
 	title.value = 'Gixny - Iniciar sesión';
 	const store = useAuthStore();
 	const toast = useToast();
-	const { errors, handleSubmit } = useForm<Login>({
+	const { errors, handleSubmit, isSubmitting } = useForm<Login>({
 		validationSchema: toFormValidator(loginSchema),
 	});
 	const onSubmit = handleSubmit(async (values) => {
 		await store.signIn(values);
+
 		if (store.error?.status === 400) {
 			toast.error('Credenciales incorrectas. Ingrese nuevamente.');
 		}
@@ -49,8 +50,9 @@
 			<button
 				type="submit"
 				class="px-5 py-3 w-full rounded-md bg-zinc-900 text-white"
+				:disabled="isSubmitting"
 			>
-				Iniciar sesión
+				{{ isSubmitting ? 'Iniciando sesión...' : 'Iniciar sesión' }}
 			</button>
 		</form>
 	</section>

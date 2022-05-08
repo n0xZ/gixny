@@ -4,14 +4,17 @@
 	import { client } from './lib/supabase';
 	import { useAuthStore } from './store';
 	import 'vue-toastification/dist/index.css';
-	
+	import { useRouter } from 'vue-router';
+	const router = useRouter();
 	client.auth.onAuthStateChange((event, session) => {
 		if (event === 'SIGNED_OUT') {
 			useAuthStore().user = null;
+			router.push('/');
 		}
 
 		if (event === 'SIGNED_IN' && session) {
 			useAuthStore().user = session?.user;
+			router.push('/dashboard');
 		}
 	});
 </script>
