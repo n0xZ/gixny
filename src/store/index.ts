@@ -3,7 +3,7 @@ import { User, ApiError } from '@supabase/supabase-js';
 import { client } from '@/lib/supabase';
 import type { Credentials } from 'src/types';
 
-export const useAuthStore = defineStore('Auth', {
+export const useAuthStore = defineStore('User', {
 	state: () => {
 		return {
 			user: null as User | null,
