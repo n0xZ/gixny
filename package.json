@@ -5,12 +5,15 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@headlessui/vue": "^1.6.0",
     "@supabase/supabase-js": "^1.35.2",
     "@vee-validate/zod": "^4.5.11",
+    "@vueuse/core": "^8.4.2",
     "autoprefixer": "^10.4.5",
     "pinia": "^2.0.13",
     "postcss": "^8.4.12",
