@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+	import { useTitle } from '@vueuse/core';
+	const title = useTitle();
+	title.value = 'Gixny - Home';
+</script>
 
 <template>
-	<main>Bienvenido a Gixny!</main>
+	<section>Bienvenido a Gixny!</section>
 </template>

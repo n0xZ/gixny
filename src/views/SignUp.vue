@@ -1,5 +1,6 @@
 <script setup lang="ts">
 	import { ref } from 'vue';
+	import { useTitle } from '@vueuse/core';
 	import { useForm } from 'vee-validate';
 	import { toFormValidator } from '@vee-validate/zod';
 	import FormField from '../components/Form/FormField.vue';
@@ -9,7 +10,10 @@
 	import type { Login } from '../types';
 	const store = useAuthStore();
 	const isSignUpSuccessFul = ref(false);
-	const { errors, handleSubmit } = useForm<Login>({
+
+	const title = useTitle();
+	title.value = 'Gixny - Crear cuenta';
+	const { errors, handleSubmit, isSubmitting } = useForm<Login>({
 		validationSchema: toFormValidator(loginSchema),
 	});
 	const onSubmit = handleSubmit(async (values) => {
@@ -42,8 +46,9 @@
 				<button
 					type="submit"
 					class="px-5 py-3 rounded-md bg-zinc-900 text-white"
+					:disabled="isSubmitting"
 				>
-					Crear nueva cuenta
+					{{ isSubmitting ? 'Cargando...' : 'Crear cuenta' }}
 				</button>
 			</form>
 		</article>
