@@ -1,6 +1,6 @@
 <script setup lang="ts">
 	import Hero from '@/components/Hero/index.vue';
-	import { useAuthStore } from '../store';
+	import { useAuthStore } from '../store/user';
 	const store = useAuthStore();
 </script>
 

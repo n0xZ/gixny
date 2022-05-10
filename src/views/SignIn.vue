@@ -5,7 +5,7 @@
 	import { useToast } from 'vue-toastification';
 	import NavLink from '../components/NavLink/index.vue';
 	import FormField from '../components/Form/FormField.vue';
-	import { useAuthStore } from '@/store/index';
+	import { useAuthStore } from '@/store/user';
 	import { loginSchema } from '@/utils/zod';
 	import type { Credentials } from '../types';
 

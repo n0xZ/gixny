@@ -1,35 +1,35 @@
 {
-  "name": "gixny",
-  "private": true,
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
-  },
-  "dependencies": {
-    "@headlessui/vue": "^1.6.0",
-    "@supabase/supabase-js": "^1.35.2",
-    "@vee-validate/zod": "^4.5.11",
-    "@vueuse/core": "^8.4.2",
-    "autoprefixer": "^10.4.5",
-    "pinia": "^2.0.13",
-    "postcss": "^8.4.12",
-    "tailwindcss": "^3.0.24",
-    "vee-validate": "^4.5.11",
-    "vue": "^3.2.25",
-    "vue-router": "^4.0.14",
-    "vue-toastification": "^2.0.0-rc.5",
-    "zod": "^3.14.4"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.1",
-    "@vue/test-utils": "^2.0.0-rc.21",
-    "typescript": "^4.5.4",
-    "vite": "^2.9.5",
-    "vitest": "^0.10.0",
-    "vue-tsc": "^0.34.7"
-  }
+	"name": "gixny",
+	"private": true,
+	"version": "0.0.0",
+	"scripts": {
+		"dev": "vite",
+		"build": "vue-tsc --noEmit && vite build",
+		"test": "vitest"
+	},
+	"dependencies": {
+		"@headlessui/vue": "^1.6.0",
+		"@supabase/supabase-js": "^1.35.2",
+		"@vee-validate/zod": "^4.5.11",
+		"@vueuse/core": "^8.4.2",
+		"autoprefixer": "^10.4.5",
+		"pinia": "^2.0.13",
+		"postcss": "^8.4.12",
+		"tailwindcss": "^3.0.24",
+		"vee-validate": "^4.5.11",
+		"vue": "^3.2.25",
+		"vue-router": "^4.0.14",
+		"vue-toastification": "^2.0.0-rc.5",
+		"zod": "^3.14.4"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^2.3.1",
+		"@vue/test-utils": "^2.0.0-rc.21",
+		"jsdom": "^19.0.0",
+		"path": "^0.12.7",
+		"typescript": "^4.5.4",
+		"vite": "^2.9.5",
+		"vitest": "^0.10.0",
+		"vue-tsc": "^0.34.7"
+	}
 }

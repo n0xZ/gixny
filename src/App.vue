@@ -2,7 +2,7 @@
 	import { RouterView } from 'vue-router';
 	import Layout from './components/Layout/Layout.vue';
 	import { client } from './lib/supabase';
-	import { useAuthStore } from './store';
+	import { useAuthStore } from './store/user';
 	import 'vue-toastification/dist/index.css';
 	import { useRouter } from 'vue-router';
 	const router = useRouter();

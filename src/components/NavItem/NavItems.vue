@@ -1,6 +1,6 @@
 <script setup lang="ts">
 	import NavLink from '../NavLink/index.vue';
-	import { useAuthStore } from '@/store/index';
+	import { useAuthStore } from '@/store/user';
 
 	const store = useAuthStore();
 </script>
