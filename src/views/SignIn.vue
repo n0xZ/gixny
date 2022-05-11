@@ -2,7 +2,6 @@
 	import { useForm } from 'vee-validate';
 	import { useTitle } from '@vueuse/core';
 	import { toFormValidator } from '@vee-validate/zod';
-	import { useToast } from 'vue-toastification';
 	import NavLink from '../components/NavLink/index.vue';
 	import FormField from '../components/Form/FormField.vue';
 	import { useAuthStore } from '@/store/user';
@@ -12,16 +11,12 @@
 	const title = useTitle();
 	title.value = 'Gixny - Iniciar sesión';
 	const store = useAuthStore();
-	const toast = useToast();
+
 	const { errors, handleSubmit, isSubmitting } = useForm<Credentials>({
 		validationSchema: toFormValidator(loginSchema),
 	});
 	const onSubmit = handleSubmit(async (values) => {
 		await store.signIn(values);
-
-		if (store.error?.status === 400) {
-			toast.error('Credenciales incorrectas. Ingrese nuevamente.');
-		}
 	});
 </script>
 
@@ -43,10 +38,11 @@
 				:placeholder="'Por ej... lacontraseñadepepito123*'"
 				:error="errors.password"
 			/>
-			<p class="mb-5">
+			<p class="mb-5" v-if="!store.error">
 				No posee cuenta?
 				<NavLink href="/signup">Regístrese aquí</NavLink>
 			</p>
+			<p v-if="store.error" class="text-red-500 h-12">{{ store.error.message }}</p>
 			<button
 				type="submit"
 				class="px-5 py-3 w-full rounded-md bg-zinc-900 text-white"
