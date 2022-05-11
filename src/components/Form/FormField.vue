@@ -1,8 +1,8 @@
 <script setup lang="ts">
 	import { useField } from 'vee-validate';
-	import type { Credentials, TaskFormValues } from '../../types';
+	import type { Credentials, TaskFormFields } from '../../types';
 	type InputType = 'text' | 'password';
-	type InputName = keyof Credentials | keyof TaskFormValues;
+	type InputName = keyof Credentials | keyof TaskFormFields;
 
 	interface FormFieldProps {
 		label: string;
@@ -27,8 +27,8 @@
 			:placeholder="placeholder"
 			v-model="value"
 		/>
-		<span class="text-red-500 h-12">
-			<p v-if="error?.length !== 0">{{ error }}</p>
+		<span class="text-red-500 h-12" v-if="error?.length !== 0">
+			{{ error }}
 		</span>
 	</aside>
 </template>
