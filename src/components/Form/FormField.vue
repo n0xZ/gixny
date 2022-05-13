@@ -13,7 +13,7 @@
 	}
 	const { error, label, name, placeholder, type } =
 		defineProps<FormFieldProps>();
-	const { value } = useField(name);
+	const { value, meta } = useField(name);
 </script>
 
 <template>
@@ -27,7 +27,7 @@
 			:placeholder="placeholder"
 			v-model="value"
 		/>
-		<span class="text-red-500 h-12" v-if="error?.length !== 0">
+		<span class="text-red-500 h-12" v-if="error?.length !== 0 && meta.touched">
 			{{ error }}
 		</span>
 	</aside>
