@@ -5,15 +5,15 @@
 	import { toFormValidator } from '@vee-validate/zod';
 	import FormField from '../components/Form/FormField.vue';
 	import SignUpSucessful from '@/components/SignUp/SignUpSucessful.vue';
-	import { useAuthStore } from '@/store/index';
+	import { useAuthStore } from '@/store/user';
 	import { loginSchema } from '@/utils/zod';
-	import type { Login } from '../types';
+	import type { Credentials } from '../types';
 	const store = useAuthStore();
 	const isSignUpSuccessFul = ref(false);
 
 	const title = useTitle();
 	title.value = 'Gixny - Crear cuenta';
-	const { errors, handleSubmit, isSubmitting } = useForm<Login>({
+	const { errors, handleSubmit, isSubmitting } = useForm<Credentials>({
 		validationSchema: toFormValidator(loginSchema),
 	});
 	const onSubmit = handleSubmit(async (values) => {
