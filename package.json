@@ -12,15 +12,10 @@
 		"@supabase/supabase-js": "^1.35.2",
 		"@vee-validate/zod": "^4.5.11",
 		"@vueuse/core": "^8.4.2",
-		"autoprefixer": "^10.4.5",
-		"daisyui": "^2.15.2",
 		"pinia": "^2.0.13",
-		"postcss": "^8.4.12",
-		"tailwindcss": "^3.0.24",
 		"vee-validate": "^4.5.11",
 		"vue": "^3.2.25",
 		"vue-router": "^4.0.14",
-		"vue-toastification": "^2.0.0-rc.5",
 		"zod": "^3.14.4"
 	},
 	"devDependencies": {
