@@ -7,26 +7,24 @@
 	interface FormFieldProps {
 		label: string;
 		name: InputName;
-		type: InputType;
+
 		placeholder: string;
 		error?: string | undefined;
 	}
-	const { error, label, name, placeholder, type } =
-		defineProps<FormFieldProps>();
+	const { error, label, name, placeholder } = defineProps<FormFieldProps>();
 	const { value, meta } = useField(name);
 </script>
 
 <template>
 	<aside class="flex flex-col">
 		<label class="mb-2">{{ label }}</label>
-		<input
-			:autocomplete="type === 'password' ? 'new-password' : 'email'"
+		<textarea
 			:name="name"
 			class="w-full p-4 pr-12 text-sm border-zinc-600 rounded-lg shadow-sm"
-			:type="type"
 			:placeholder="placeholder"
+			type="text"
 			v-model="value"
-		/>
+		></textarea>
 		<span class="text-red-500 h-12" v-if="error?.length !== 0 && meta.touched">
 			{{ error }}
 		</span>

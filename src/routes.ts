@@ -35,6 +35,20 @@ export const router = createRouter({
 			name: 'Dashboard',
 
 			component: () => import('./views/Dashboard.vue'),
+			children: [
+				{
+					path: 'tasks/create',
+					component: () => import('./views/tasks/CreateTask.vue'),
+				},
+				{
+					path: 'tasks/view',
+					component: () => import('./views/tasks/ViewTasks.vue'),
+				},
+				{
+					path: 'tasks/update/:id',
+					component: () => import('./views/tasks/UpdateTask.vue'),
+				},
+			],
 			meta: {
 				requiresAuth: true,
 			},
