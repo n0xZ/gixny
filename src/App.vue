@@ -1,10 +1,10 @@
 <script setup lang="ts">
-	import { RouterView } from 'vue-router';
+	import { RouterView, useRouter } from 'vue-router';
+
 	import Layout from './components/Layout/Layout.vue';
 	import { client } from './lib/supabase';
 	import { useAuthStore } from './store/user';
-	import 'vue-toastification/dist/index.css';
-	import { useRouter } from 'vue-router';
+
 	const router = useRouter();
 	client.auth.onAuthStateChange((event, session) => {
 		if (event === 'SIGNED_OUT') {
@@ -28,9 +28,14 @@
 		</router-view>
 	</Layout>
 </template>
-
 <style>
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: Inconsolata;
+	}
+	p {
+		max-width: 75ch;
+	}
 </style>

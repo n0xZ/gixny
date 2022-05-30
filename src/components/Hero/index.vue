@@ -1,5 +1,11 @@
 <template>
-	<section class="container mx-auto max-w-5xl">
+	<section>
 		<slot></slot>
 	</section>
 </template>
+
+<style scoped>
+	section {
+		max-width: 72rem;
+	}
+</style>

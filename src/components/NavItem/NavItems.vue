@@ -6,10 +6,7 @@
 </script>
 
 <template>
-	<ul
-		class="flex flex-row items-center space-x-5"
-		v-if="!store.user"
-	>
+	<ul v-if="!store.user">
 		<li>
 			<NavLink href="/signup">Crear usuario</NavLink>
 		</li>
@@ -17,10 +14,7 @@
 			<NavLink href="/signin">Iniciar sesión</NavLink>
 		</li>
 	</ul>
-	<ul
-		class="flex flex-row items-center space-x-5"
-		v-if="store.user"
-	>
+	<ul v-if="store.user">
 		<li>
 			<NavLink href="/profile"> Mi perfíl</NavLink>
 		</li>
@@ -34,3 +28,24 @@
 		</li>
 	</ul>
 </template>
+<style scoped>
+	ul {
+		display: flex;
+		flex-direction: row;
+
+		align-items: center;
+	}
+	li {
+		list-style: none;
+		margin-left: 1rem;
+	}
+	button {
+		border: none;
+		background: none;
+		cursor: pointer;
+		border-radius: 2rem;
+		color: white;
+		background: #000;
+		padding: 1rem 0.5rem 1rem 0.5rem;
+	}
+</style>

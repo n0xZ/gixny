@@ -8,10 +8,19 @@
 </script>
 
 <template>
-	<router-link
-		:class="'text-zinc-900 font-bold font-lato'"
-		:to="{ path: href }"
-	>
+	<RouterLink :to="{ path: href }">
 		<slot></slot>
-	</router-link>
+	</RouterLink>
 </template>
+
+<style scoped>
+	a {
+		color: black;
+		text-decoration: none;
+		font-family: 'Lato';
+	}
+	a:hover {
+		color: #ffc107;
+		transition: 0.1s ease-in-out;
+	}
+</style>
