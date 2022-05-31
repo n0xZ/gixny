@@ -1,25 +1,27 @@
 <script setup lang="ts">
 	import NavLink from '../NavLink/index.vue';
-	import NavItems from '../NavItem/NavItems.vue';
+	import Public from '../NavItem/Public.vue';
+	import Private from '../NavItem/Private.vue';
 </script>
 
 <template>
-	<header>
+	<header :class="$style.header">
 		<nav>
 			<h1>
 				<NavLink :href="'/'">Home</NavLink>
 			</h1>
 
-			<NavItems />
+			<Public />
+			<Private />
 		</nav>
 	</header>
 </template>
-<style scoped>
-	header {
-		padding: 1.5rem 3rem 1.5rem 3rem;
-		background: linear-gradient(to left,#F9B47D,#CB45A8);
+<style module>
+	.header {
+		padding: 1.2rem 2rem 1.2rem 2rem;
+		background: linear-gradient(to left, #03cea4, #fb4d3d);
 	}
-	header > nav {
+	.header > nav {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;

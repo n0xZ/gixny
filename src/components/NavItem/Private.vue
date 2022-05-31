@@ -6,21 +6,13 @@
 </script>
 
 <template>
-	<ul v-if="!store.user">
-		<li>
-			<NavLink href="/signup">Crear usuario</NavLink>
+	<ul :class="$style['nav-items__list']" v-if="store.user">
+		<li :class="$style['nav-items__list__item']">
+			<NavLink :href="'/profile'"> Mi perfíl</NavLink>
 		</li>
-		<li>
-			<NavLink href="/signin">Iniciar sesión</NavLink>
-		</li>
-	</ul>
-	<ul v-if="store.user">
-		<li>
-			<NavLink href="/profile"> Mi perfíl</NavLink>
-		</li>
-		<li>
+		<li :class="$style['nav-items__list__item']">
 			<button
-				class="px-5 py-3 rounded-lg text-white bg-zinc-900"
+				:class="$style['nav-items__list__logout__button']"
 				@click="store.signOut"
 			>
 				Cerrar sesión
@@ -28,18 +20,18 @@
 		</li>
 	</ul>
 </template>
-<style scoped>
-	ul {
+<style module>
+	.nav-items__list {
 		display: flex;
 		flex-direction: row;
 
 		align-items: center;
 	}
-	li {
+	.nav-items__list__item {
 		list-style: none;
 		margin-left: 1rem;
 	}
-	button {
+	.nav-items__list__logout__button {
 		border: none;
 		background: none;
 		cursor: pointer;

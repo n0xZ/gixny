@@ -8,6 +8,7 @@
 	import { useAuthStore } from '@/store/user';
 	import { loginSchema } from '@/utils/zod';
 	import type { Credentials } from '../types';
+	import Button from '@/components/Button/index.vue';
 	const store = useAuthStore();
 	const isSignUpSuccessFul = ref(false);
 
@@ -25,34 +26,49 @@
 </script>
 
 <template>
-	<section class="container mx-auto max-w-4xl">
-		<article v-if="!isSignUpSuccessFul">
-			<h1 class="text-center text-2xl mb-3">Crear cuenta</h1>
-			<form @submit="onSubmit">
-				<FormField
-					:type="'text'"
-					:name="'email'"
-					:label="'Correo electrónico'"
-					:placeholder="'Por ej... elmaildepepito123@gmail.com'"
-					:error="errors.email"
-				/>
-				<FormField
-					:name="'password'"
-					:type="'password'"
-					:label="'Contraseña'"
-					:placeholder="'Por ej... lacontraseñadepepito123*'"
-					:error="errors.password"
-				/>
-				<button
-					type="submit"
-					class="px-5 py-3 rounded-md bg-zinc-900 text-white"
-					:disabled="isSubmitting"
-				>
-					{{ isSubmitting ? 'Cargando...' : 'Crear cuenta' }}
-				</button>
-			</form>
-		</article>
+	<article v-if="!isSignUpSuccessFul">
+		<h1 :class="$style.signUp__title">Crear cuenta</h1>
+		<form @submit="onSubmit" :class="$style.signUp__container">
+			<FormField
+				:type="'text'"
+				:name="'email'"
+				:label="'Correo electrónico'"
+				:placeholder="'Por ej... elmaildepepito123@gmail.com'"
+				:error="errors.email"
+			/>
+			<FormField
+				:name="'password'"
+				:type="'password'"
+				:label="'Contraseña'"
+				:placeholder="'Por ej... lacontraseñadepepito123*'"
+				:error="errors.password"
+			/>
+			<Button type="submit" :disabled="isSubmitting">
+				{{ isSubmitting ? 'Cargando...' : 'Crear cuenta' }}
+			</Button>
+		</form>
+	</article>
 
-		<SignUpSucessful :isLoginSucessful="isSignUpSuccessFul" />
-	</section>
+	<SignUpSucessful :isLoginSucessful="isSignUpSuccessFul" />
 </template>
+<style module>
+	.signUp__container {
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+
+		height: 100vh;
+	}
+	.signUp__title {
+		font-weight: bold;
+		text-align: center;
+	}
+	.signUp__advice__link {
+		color: #00bcd4;
+	}
+	.signUp__submit_errors {
+		margin-bottom: 1rem;
+		font-weight: 600;
+		color: red;
+	}
+</style>

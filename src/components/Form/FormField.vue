@@ -17,18 +17,48 @@
 </script>
 
 <template>
-	<aside class="flex flex-col">
-		<label class="mb-2">{{ label }}</label>
+	<aside :class="$style['form-field']">
+		<label :class="$style['form-field__label']">{{ label }}</label>
 		<input
+			:class="$style['form-field__input']"
 			:autocomplete="type === 'password' ? 'new-password' : 'email'"
 			:name="name"
-			class="w-full p-4 pr-12 text-sm border-zinc-600 rounded-lg shadow-sm"
 			:type="type"
 			:placeholder="placeholder"
 			v-model="value"
 		/>
-		<span class="text-red-500 h-12" v-if="error?.length !== 0 && meta.touched">
+		<span
+			:class="$style['form-field__error__label']"
+			v-if="error?.length !== 0 && meta.touched"
+		>
 			{{ error }}
 		</span>
 	</aside>
 </template>
+
+<style module>
+	.form-field {
+		margin-bottom: 2rem;
+	}
+	.form-field__label {
+		display: block;
+		margin-bottom: 0.5rem;
+	}
+	.form-field__input {
+		display: block;
+		width: 100%;
+		padding: 0.5rem;
+		border: 1px solid #ccc;
+		border-radius: 0.25rem;
+	}
+	.form-field__input:focus {
+		border-color: #000;
+	}
+	.form-field__input:invalid {
+		border-color: #f00;
+	}
+	.form-field__error__label {
+		margin-top: 1rem;
+		color: red;
+	}
+</style>
