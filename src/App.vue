@@ -20,22 +20,32 @@
 </script>
 
 <template>
-	<Layout>
-		<router-view v-slot="{ Component }">
-			<transition>
+	<router-view v-slot="{ Component, route }">
+		<transition name="nested"
+			><Layout :route="route">
 				<component :is="Component" />
-			</transition>
-		</router-view>
-	</Layout>
+			</Layout>
+		</transition>
+	</router-view>
 </template>
 <style>
 	* {
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
-		font-family: Inconsolata;
+		font-family: 'Barlow', sans-serif;
 	}
 	p {
 		max-width: 75ch;
+	}
+	.nested-enter-active .inner,
+	.nested-leave-active .inner {
+		transition: all 0.3s ease-in-out;
+	}
+
+	.nested-enter-from .inner,
+	.nested-leave-to .inner {
+		transform: translateX(30px);
+		opacity: 0;
 	}
 </style>
