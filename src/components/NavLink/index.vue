@@ -8,18 +8,18 @@
 </script>
 
 <template>
-	<RouterLink :to="{ path: href }">
+	<RouterLink :to="{ path: href }" :class="$style['nav-link']">
 		<slot></slot>
 	</RouterLink>
 </template>
 
-<style scoped>
-	a {
+<style module>
+	.nav-link {
 		color: black;
 		text-decoration: none;
 		font-family: 'Lato';
 	}
-	a:hover {
+	.nav-link:hover {
 		color: #ffc107;
 		transition: 0.1s ease-in-out;
 	}
