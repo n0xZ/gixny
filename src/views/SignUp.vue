@@ -3,12 +3,12 @@
 	import { useTitle } from '@vueuse/core';
 	import { useForm } from 'vee-validate';
 	import { toFormValidator } from '@vee-validate/zod';
-	import FormField from '../components/Form/FormField.vue';
-	import SignUpSucessful from '@/components/SignUp/SignUpSucessful.vue';
+	import FormField from '../components/form/FormField.vue';
+	import SignUpSucessful from '@/components/signup/SignUpSucessful.vue';
 	import { useAuthStore } from '@/store/user';
 	import { loginSchema } from '@/utils/zod';
 	import type { Credentials } from '../types';
-	import Button from '@/components/Button/index.vue';
+	import Button from '@/components/button/index.vue';
 	const store = useAuthStore();
 	const isSignUpSuccessFul = ref(false);
 
@@ -28,7 +28,7 @@
 <template>
 	<article v-if="!isSignUpSuccessFul">
 		<h1 :class="$style.signUp__title">Crear cuenta</h1>
-		<form @submit="onSubmit" :class="$style.signUp__container">
+		<form @submit="onSubmit" class="grid grid-rows-3   place-items-center ">
 			<FormField
 				:type="'text'"
 				:name="'email'"

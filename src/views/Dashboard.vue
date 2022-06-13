@@ -1,17 +1,19 @@
 <script setup lang="ts">
 	import { useTitle } from '@vueuse/core';
+
+	import { RouterLink, RouterView, useRoute } from 'vue-router';
 	import Hero from '@/components/Hero/index.vue';
 	import { useAuthStore } from '../store/user';
-	const loggedUser = useAuthStore().user;
+
 	const title = useTitle();
 	title.value = 'Gixny - Dashboard';
+	const { path } = useRoute();
 </script>
 
 <template>
 	<Hero>
-		<article class="grid grid-cols-2">
-			<h1>Bienvenido, {{ loggedUser?.email }}</h1>
-			<p>Que desea realizar hoy?</p>
-		</article>
+		<RouterLink to="/dashboard/tasks/create">Crear tareas</RouterLink>
+		<RouterLink to="/dashboard/tasks/view">Ver tareas</RouterLink>
+		<RouterView></RouterView>
 	</Hero>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 	import { RouterView, useRouter } from 'vue-router';
 
-	import Layout from './components/Layout/Layout.vue';
+	import Layout from './components/layout/Layout.vue';
 	import { client } from './lib/supabase';
 	import { useAuthStore } from './store/user';
 

@@ -7,7 +7,7 @@
 			"@/utils/*": ["src/utils/*"],
 			"@/components/*": ["src/components/*"],
 			"@/store/*": ["src/store/*"],
-			"@types":["src/types"]
+			"@/*":["src/*"]
 		},
 		"target": "esnext",
 		"useDefineForClassFields": true,

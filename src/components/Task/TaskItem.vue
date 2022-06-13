@@ -1,5 +1,5 @@
 <script setup lang="ts">
-	import { Task } from 'src/types';
+	import { Task } from '@/types';
 
 	interface Props {
 		task: Task;

@@ -7,7 +7,7 @@
 	import Button from '@/components/Button/index.vue';
 	import { useAuthStore } from '@/store/user';
 	import { loginSchema } from '@/utils/zod';
-	import type { Credentials } from '@types';
+	import type { Credentials } from '@/types';
 
 	const title = useTitle();
 	title.value = 'Gixny - Iniciar sesión';

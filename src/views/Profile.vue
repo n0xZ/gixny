@@ -16,3 +16,5 @@
 		</article>
 	</Hero>
 </template>
+
+<style module></style>

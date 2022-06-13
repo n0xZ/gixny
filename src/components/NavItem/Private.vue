@@ -6,13 +6,13 @@
 </script>
 
 <template>
-	<ul :class="$style['nav-items__list']" v-if="store.user">
-		<li :class="$style['nav-items__list__item']">
+	<ul class="flex flex-row items-center space-x-5" v-if="store.user">
+		<li  class="decoration-none">
 			<NavLink :href="'/profile'"> Mi perfíl</NavLink>
 		</li>
-		<li :class="$style['nav-items__list__item']">
+		<li  class="decoration-none">
 			<button
-				:class="$style['nav-items__list__logout__button']"
+				class="btn btn-primary"
 				@click="store.signOut"
 			>
 				Cerrar sesión
@@ -20,24 +20,3 @@
 		</li>
 	</ul>
 </template>
-<style module>
-	.nav-items__list {
-		display: flex;
-		flex-direction: row;
-
-		align-items: center;
-	}
-	.nav-items__list__item {
-		list-style: none;
-		margin-left: 1rem;
-	}
-	.nav-items__list__logout__button {
-		border: none;
-		background: none;
-		cursor: pointer;
-		border-radius: 2rem;
-		color: white;
-		background: #000;
-		padding: 1rem 0.5rem 1rem 0.5rem;
-	}
-</style>

@@ -4,9 +4,9 @@
 	import FormField from '@/components/Form/FormField.vue';
 	import FormTextArea from '@/components/Form/FormTextArea.vue';
 	import Hero from '@/components/Hero/index.vue';
+	import Button from '@/components/Button/index.vue';
 	import { taskSchema } from '@/utils/zod';
 	import type { TaskFormFields } from '../../types';
-	import Button from '@/components/Button/index.vue';
 	const { errors, handleSubmit, isSubmitting } = useForm<TaskFormFields>({
 		validationSchema: toFormValidator(taskSchema),
 	});
@@ -38,7 +38,7 @@
 				:placeholder="'Por ej... Mi primer tarea'"
 				:name="'priority'"
 			/>
-			<button type="submit" :disabled="isSubmitting">Crear tarea</button>
+			<Button type="submit" :disabled="isSubmitting">Crear tarea</Button>
 		</form>
 	</Hero>
 </template>

@@ -23,7 +23,7 @@ describe('SignIn component', () => {
 				plugins: [router],
 			},
 		});
-		const input = wrapper.find('input');
+		const input = wrapper.find('input[type="text"]');
 
 		input.setValue('');
 		const error = wrapper.find('span');

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-	import NavLink from '../NavLink/index.vue';
-	import Public from '../NavItem/Public.vue';
-	import Private from '../NavItem/Private.vue';
+	import NavLink from '../navlink/index.vue';
+	import Public from '../navitem/Public.vue';
+	import Private from '../navitem/Private.vue';
 </script>
 
 <template>
-	<header :class="$style.header">
-		<nav>
+	<header class="p-6 container mx-auto">
+		<nav class="flex flex-row items-center justify-between c-gray-900 font-bold">
 			<h1>
 				<NavLink :href="'/'">Home</NavLink>
 			</h1>
@@ -16,15 +16,3 @@
 		</nav>
 	</header>
 </template>
-<style module>
-	.header {
-		padding: 1.2rem 2rem 1.2rem 2rem;
-		background: linear-gradient(to left, #03cea4, #fb4d3d);
-	}
-	.header > nav {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-	}
-</style>

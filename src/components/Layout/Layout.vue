@@ -11,15 +11,9 @@
 <template>
 	<div :key="route.name!">
 		<Header />
-		<main :class="$style.main__content">
+		<main class="min-h-screen container mx-auto max-w-5xl">
 			<slot></slot>
 		</main>
 	</div>
 </template>
 
-<style module>
-	.main__content {
-		min-height: 100vh;
-		padding: 1rem 0 1rem 0;
-	}
-</style>
