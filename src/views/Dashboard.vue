@@ -14,6 +14,5 @@
 	<Hero>
 		<RouterLink to="/dashboard/tasks/create">Crear tareas</RouterLink>
 		<RouterLink to="/dashboard/tasks/view">Ver tareas</RouterLink>
-		<RouterView></RouterView>
 	</Hero>
 </template>

@@ -6,7 +6,7 @@
 </script>
 
 <template>
-	<button class="px-5 py-3 rounded-xl border-2 border-zinc-600 text-zinc-900 " v-bind="props">
+	<button class="px-6 py-3 rounded-xl border-2 border-zinc-50 bg-gray-200 font-semibold text-zinc-900 " v-bind="props">
 		<slot></slot>
 	</button>
 </template>

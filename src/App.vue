@@ -35,9 +35,7 @@
 		box-sizing: border-box;
 		font-family: 'Barlow', sans-serif;
 	}
-	p {
-		max-width: 75ch;
-	}
+
 	.nested-enter-active .inner,
 	.nested-leave-active .inner {
 		transition: all 0.3s ease-in-out;

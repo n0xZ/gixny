@@ -6,13 +6,13 @@
 </script>
 
 <template>
-	<ul class="flex flex-row items-center space-x-5" v-if="store.user">
+	<ul class="flex flex-row items-center space-x-5 list-none" v-if="store.user">
 		<li  class="decoration-none">
 			<NavLink :href="'/profile'"> Mi perfíl</NavLink>
 		</li>
 		<li  class="decoration-none">
 			<button
-				class="btn btn-primary"
+				class="rounded-xl border-2 border-gray-600 p-2 bg-transparent"
 				@click="store.signOut"
 			>
 				Cerrar sesión

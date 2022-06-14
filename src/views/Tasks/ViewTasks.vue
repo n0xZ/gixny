@@ -7,13 +7,9 @@
 </script>
 
 <template>
-	<section :class="$style.tasks__container" v-if="store.tasks.length !== 0">
+	<section class="container mx-auto max-w-5xl" v-if="store.tasks.length !== 0">
 		<TaskList :tasks="store.tasks" />
 	</section>
 </template>
 
-<style module>
-	.tasks__container {
-		margin: 2rem 1rem 2rem 1rem;
-	}
-</style>
+

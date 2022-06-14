@@ -6,25 +6,12 @@
 </script>
 
 <template>
-	<ul :class="$style['nav-items__list']" v-if="!store.user">
-		<li :class="$style['nav-items__list__item']">
+	<ul class="flex flex-row items-center space-x-5 list-none" v-if="!store.user">
+		<li class="decoration-none ">
 			<NavLink :href="'/signup'">Crear usuario</NavLink>
 		</li>
-		<li :class="$style['nav-items__list__item']">
+		<li class="decoration-none ">
 			<NavLink :href="'/signin'">Iniciar sesión</NavLink>
 		</li>
 	</ul>
 </template>
-
-<style module>
-	.nav-items__list {
-		display: flex;
-		flex-direction: row;
-
-		align-items: center;
-	}
-	.nav-items__list__item {
-		list-style: none;
-		margin-left: 1rem;
-	}
-</style>

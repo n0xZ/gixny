@@ -22,8 +22,8 @@
 </script>
 
 <template>
-	<h1 :class="$style.signIn__title">Iniciar sesión</h1>
-	<form @submit="onSubmit" :class="$style.signIn__container">
+	<h1 class="font-bold text-center mb-4">Iniciar sesión</h1>
+	<form @submit="onSubmit" class="flex flex-col h-screen space-y-5 container mx-auto ">
 		<FormField
 			:type="'text'"
 			:name="'email'"
@@ -38,11 +38,11 @@
 			:placeholder="'Por ej... lacontraseñadepepito123*'"
 			:error="errors.password"
 		/>
-		<p :class="$style.signIn__advice__link" v-if="!store.error">
+		<p  v-if="!store.error">
 			No posee cuenta?
-			<NavLink :href="'/signup'">Regístrese aquí</NavLink>
+			<NavLink :href="'/signup'">Registrarse</NavLink>
 		</p>
-		<p :class="$style.signIn__submit_errors" v-if="store.error">
+		<p class="c-red-400" v-if="store.error">
 			{{ store.error.message }}
 		</p>
 		<Button type="submit" :disabled="isSubmitting">
@@ -51,24 +51,3 @@
 	</form>
 </template>
 
-<style module>
-	.signIn__container {
-		display: flex;
-		flex-direction: column;
-		justify-content: start;
-
-		height: 100vh;
-	}
-	.signIn__title {
-		font-weight: bold;
-		text-align: center;
-	}
-	.signIn__advice__link {
-		color: #00bcd4;
-	}
-	.signIn__submit_errors {
-		margin-bottom: 1rem;
-		font-weight: 600;
-		color: red;
-	}
-</style>
