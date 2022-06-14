@@ -11,6 +11,5 @@ export const loginSchema = z.object({
 export const taskSchema = z.object({
 	title: z.string().min(3, { message: 'Campo requerido' }),
 	description: z.string().min(3, { message: 'Campo requerido' }),
-	status: z.string().min(3, { message: 'Campo requerido' }),
 	priority: z.string().min(3, { message: 'Campo requerido' }),
 });
