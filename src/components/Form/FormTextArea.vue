@@ -2,7 +2,7 @@
 	import { useField } from 'vee-validate';
 	import type { Credentials, TaskFormFields } from '../../types';
 
-	type InputName = keyof Credentials | keyof TaskFormFields;
+	type InputName =  keyof TaskFormFields;
 
 	interface FormFieldProps {
 		label: string;

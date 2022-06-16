@@ -6,7 +6,6 @@
 		route: RouteLocationNormalizedLoaded;
 	}
 	const { route } = defineProps<Props>();
-	console.log();
 </script>
 <template>
 	<div :key="route.name!">
@@ -16,4 +15,3 @@
 		</main>
 	</div>
 </template>
-

@@ -12,15 +12,3 @@
 		<slot></slot>
 	</RouterLink>
 </template>
-
-<style module>
-	.nav-link {
-		color: black;
-		text-decoration: none;
-		font-family: 'Lato';
-	}
-	.nav-link:hover {
-		color: #ffc107;
-		transition: 0.1s ease-in-out;
-	}
-</style>

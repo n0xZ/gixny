@@ -8,12 +8,7 @@
 </script>
 
 <template>
-	<h2>{{ task.title }}</h2>
+	<h2 class="font-bold">{{ task.title }}</h2>
 	<p>{{ task.description }}</p>
 	<p>{{ task.status }}</p>
 </template>
-<style module>
-	.task__container {
-		margin: 2rem 1rem 2rem 1 rem;
-	}
-</style>
