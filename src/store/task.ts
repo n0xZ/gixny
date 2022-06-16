@@ -2,16 +2,18 @@ import { defineStore } from 'pinia';
 import { client } from '@/lib/supabase';
 import { Task, TaskFormFields } from '../types';
 
-export const taskStore = defineStore('Task', {
+export const useTaskStore = defineStore('Task', {
 	state: () => {
 		return {
 			tasks: [] as Task[],
+
 		};
 	},
 	getters: {
 		getActiveTasks: (state) => state.tasks.filter((task) => !task.isFinished),
 		getFinishedTasks: (state) => state.tasks.filter((task) => task.isFinished)
-	},
+	}
+	,
 	actions: {
 		async fetchTasks() {
 			const {
@@ -44,7 +46,7 @@ export const taskStore = defineStore('Task', {
 				data: tasks,
 				status,
 				error,
-			} = await client.from('task').delete()
+			} = await client.from('task').delete({id:id})
 			if (error && status !== 200) throw new Error(error.message);
 
 			if (tasks === null) {
