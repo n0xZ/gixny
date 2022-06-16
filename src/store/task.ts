@@ -9,7 +9,8 @@ export const taskStore = defineStore('Task', {
 		};
 	},
 	getters: {
-		getActiveTasks: (state) => state.tasks.filter((task) => task.isFinished!),
+		getActiveTasks: (state) => state.tasks.filter((task) => !task.isFinished),
+		getFinishedTasks: (state) => state.tasks.filter((task) => task.isFinished)
 	},
 	actions: {
 		async fetchTasks() {
@@ -31,6 +32,32 @@ export const taskStore = defineStore('Task', {
 				status,
 				error,
 			} = await client.from('task').insert([values]);
+			if (error && status !== 200) throw new Error(error.message);
+
+			if (tasks === null) {
+				this.tasks = [];
+			}
+			this.tasks = tasks!;
+		},
+		async deleteTask(id:number) {
+			const {
+				data: tasks,
+				status,
+				error,
+			} = await client.from('task').delete()
+			if (error && status !== 200) throw new Error(error.message);
+
+			if (tasks === null) {
+				this.tasks = [];
+			}
+			this.tasks = tasks!;
+		},
+		async updateTask(id: number,values: TaskFormFields) {
+			const {
+				data: tasks,
+				status,
+				error,
+			} = await client.from('task').update(values).match({id:id});
 			if (error && status !== 200) throw new Error(error.message);
 
 			if (tasks === null) {
