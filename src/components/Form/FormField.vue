@@ -29,7 +29,7 @@
 		/>
 		<span
 			class="c-red-500 h-12"
-			v-if="error?.length !== 0 && meta.touched"
+		
 		>
 			{{ error }}
 		</span>
