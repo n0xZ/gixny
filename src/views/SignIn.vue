@@ -5,7 +5,7 @@
 	import NavLink from '@/components/NavLink/index.vue';
 	import FormField from '@/components/Form/FormField.vue';
 	import Button from '@/components/Button/index.vue';
-	import { useAuthStore } from '@/store/user';
+	import { useAuthStore } from '@/store/auth';
 	import { loginSchema } from '@/utils/zod';
 	import type { Credentials } from '@/types';
 

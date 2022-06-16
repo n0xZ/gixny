@@ -5,7 +5,7 @@
 	import { toFormValidator } from '@vee-validate/zod';
 	import FormField from '../components/form/FormField.vue';
 	import SignUpSucessful from '@/components/signup/SignUpSucessful.vue';
-	import { useAuthStore } from '@/store/user';
+	import { useAuthStore } from '@/store/auth';
 	import { loginSchema } from '@/utils/zod';
 	import type { Credentials } from '../types';
 	import Button from '@/components/button/index.vue';
