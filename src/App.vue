@@ -28,22 +28,3 @@
 		</transition>
 	</router-view>
 </template>
-<style>
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		font-family: 'Barlow', sans-serif;
-	}
-
-	.nested-enter-active .inner,
-	.nested-leave-active .inner {
-		transition: all 0.3s ease-in-out;
-	}
-
-	.nested-enter-from .inner,
-	.nested-leave-to .inner {
-		transform: translateX(30px);
-		opacity: 0;
-	}
-</style>
