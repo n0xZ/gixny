@@ -8,9 +8,7 @@
 </script>
 
 <template>
-	<article class="container mx-auto">
-		<aside v-for="task in props.tasks" >
+		<article v-for="task in props.tasks"  class="grid grid-rows-2  gap-6">
 			<TaskItem :task="task" />
-		</aside>
-	</article>
+		</article>
 </template>
