@@ -1,16 +1,31 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+	import {useRoute,onBeforeRouteUpdate} from 'vue-router'
 	import { useForm } from 'vee-validate';
 	import { toFormValidator } from '@vee-validate/zod';
+
 	import FormField from '@/components/Form/FormField.vue';
 	import Hero from '@/components/Hero/index.vue';
 	import Button from '@/components/Button/index.vue';
+
 	import { taskSchema } from '@/utils/zod';
-	import type { TaskFormFields } from '../../types';
+	import {useTaskStore} from '@/store/task'
+	import type { Task, TaskFormFields } from '../../types';
+import { computed } from '@vue/reactivity';
+
+	const store = useTaskStore();
+	const taskParamsId = useRoute().params.id;
+
+   const selectedTask = computed(()=> store.tasks.find((task:Task)=>Number(task.id)===Number(taskParamsId)))
+
+
 	const { errors, handleSubmit, isSubmitting } = useForm<TaskFormFields>({
 		validationSchema: toFormValidator(taskSchema),
+		initialValues:selectedTask.value
+		
 	});
-	const onSubmit = handleSubmit((values) => {
-		console.log(values);
+	const onSubmit = handleSubmit(async(values) => {
+	await store.updateTask(Number(taskParamsId),values);
 	});
 </script>
 
@@ -27,7 +42,7 @@
 			<FormField
 				:error="errors.description"
 				:type="'text'"
-				:label="'Titulo de tarea'"
+				:label="'Descripción de la tarea'"
 				:placeholder="'Por ej... la descripción de mi tarea'"
 				:name="'description'"
 			/>
@@ -36,7 +51,7 @@
 				:type="'text'"
 				:label="'Prioridad de la tarea'"
 				:placeholder="'Por ej... Mi primer tarea'"
-				:name="'title'"
+				:name="'priority'"
 			/>
 			<Button :disabled="isSubmitting">Modificar tarea</Button>
 		</form>

@@ -3,13 +3,13 @@
 	import { toFormValidator } from '@vee-validate/zod';
 	import FormField from '@/components/Form/FormField.vue';
 	import FormTextArea from '@/components/Form/FormTextArea.vue';
-	import Hero from '@/components/Hero/index.vue';
+
 	import Button from '@/components/Button/index.vue';
-	import { taskStore } from '@/store/task';
+	import { useTaskStore } from '@/store/task';
 
 	import { taskSchema } from '../../utils/zod';
 	import type { TaskFormFields } from '../../types';
-	const store = taskStore();
+	const store = useTaskStore();
 	const { errors, handleSubmit, isSubmitting } = useForm<TaskFormFields>({
 		validationSchema: toFormValidator(taskSchema),
 	});
@@ -19,7 +19,7 @@
 </script>
 
 <template>
-	<form @submit="onSubmit">
+	<form @submit="onSubmit" class="space-y-6">
 		<FormField
 			:error="errors.title"
 			:type="'text'"
