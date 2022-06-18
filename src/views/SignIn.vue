@@ -1,53 +1,54 @@
 <script setup lang="ts">
-	import { useForm } from 'vee-validate';
-	import { useTitle } from '@vueuse/core';
-	import { toFormValidator } from '@vee-validate/zod';
-	import NavLink from '@/components/NavLink/index.vue';
-	import FormField from '@/components/Form/FormField.vue';
-	import Button from '@/components/Button/index.vue';
-	import { useAuthStore } from '@/store/auth';
-	import { loginSchema } from '@/utils/zod';
-	import type { Credentials } from '@/types';
+	import { useForm } from 'vee-validate'
+	import { useTitle } from '@vueuse/core'
+	import { toFormValidator } from '@vee-validate/zod'
+	import NavLink from '@/components/NavLink/index.vue'
+	import FormField from '@/components/Form/FormField.vue'
+	import FormButton from '@/components/form/FormButton.vue'
+	import { useAuthStore } from '@/store/auth'
+	import { loginSchema } from '@/utils/zod'
+	import type { Credentials } from '@/types'
+	import FormError from '@/components/form/FormError.vue'
 
-	const title = useTitle();
-	title.value = 'Gixny - Iniciar sesión';
-	const store = useAuthStore();
+	const title = useTitle()
+	title.value = 'Gixny - Iniciar sesión'
+	const store = useAuthStore()
 
 	const { errors, handleSubmit, isSubmitting } = useForm<Credentials>({
 		validationSchema: toFormValidator(loginSchema),
-	});
+	})
 	const onSubmit = handleSubmit(async (values) => {
-		await store.signIn(values);
-	});
+		await store.signIn(values)
+	})
 </script>
 
 <template>
-	<h1 class="font-bold text-center mb-4">Iniciar sesión</h1>
-	<form @submit="onSubmit" class="flex flex-col h-screen space-y-5 container mx-auto ">
-		<FormField
+	<h2 class="font-bold text-center mb-4">Iniciar sesión</h2>
+	<form
+		@submit="onSubmit"
+		class="flex flex-col h-screen space-y-6 container mx-auto"
+	>
+		<form-field
 			:type="'text'"
 			:name="'email'"
 			:label="'Correo electrónico'"
 			:placeholder="'Por ej... elmaildepepito123@gmail.com'"
 			:error="errors.email"
 		/>
-		<FormField
+		<form-field
 			:name="'password'"
 			:type="'password'"
 			:label="'Contraseña'"
 			:placeholder="'Por ej... lacontraseñadepepito123*'"
 			:error="errors.password"
 		/>
-		<p  v-if="!store.error">
+		<p v-if="!store.error">
 			No posee cuenta?
-			<NavLink :href="'/signup'">Registrarse</NavLink>
+			<NavLink :href="'/sign-up'">Registrarse</NavLink>
 		</p>
-		<p class="c-red-400" v-if="store.error">
-			{{ store.error.message }}
-		</p>
-		<Button type="submit" :disabled="isSubmitting">
+		<form-error :errors="store.error"/>
+		<form-button type="submit" :disabled="isSubmitting">
 			{{ isSubmitting ? 'Iniciando sesión...' : 'Iniciar sesión' }}
-		</Button>
+		</form-button>
 	</form>
 </template>
-

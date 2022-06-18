@@ -8,10 +8,10 @@
 <template>
 	<ul class="flex flex-row items-center space-x-5 list-none" v-if="!store.user">
 		<li class="decoration-none ">
-			<NavLink :href="'/signup'">Crear usuario</NavLink>
+			<nav-link :href="'/sign-up'">Crear usuario</nav-link>
 		</li>
 		<li class="decoration-none ">
-			<NavLink :href="'/signin'">Iniciar sesión</NavLink>
+			<nav-link :href="'/sign-in'">Iniciar sesión</nav-link>
 		</li>
 	</ul>
 </template>

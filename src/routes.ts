@@ -1,6 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import { useAuthStore } from './store/auth';
-
+import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from './store/auth'
 
 export const router = createRouter({
 	history: createWebHistory(),
@@ -8,13 +7,13 @@ export const router = createRouter({
 		{
 			path: '/',
 			name: 'PublicHome',
-			component: ()=>import('./views/Home.vue'),
+			component: () => import('./views/Home.vue'),
 			meta: {
 				requiresAuth: false,
 			},
 		},
 		{
-			path: '/signin',
+			path: '/sign-in',
 			name: 'SignIn',
 			component: () => import('./views/SignIn.vue'),
 			meta: {
@@ -23,7 +22,7 @@ export const router = createRouter({
 		},
 
 		{
-			path: '/signup',
+			path: '/sign-up',
 			name: 'SignUp',
 			component: () => import('./views/SignUp.vue'),
 			meta: {
@@ -32,7 +31,6 @@ export const router = createRouter({
 		},
 		{
 			path: '/dashboard',
-
 
 			component: () => import('./views/Dashboard.vue'),
 
@@ -70,11 +68,11 @@ export const router = createRouter({
 			},
 		},
 	],
-});
+})
 
 router.beforeEach((to, from, next) => {
-	const store = useAuthStore();
+	const store = useAuthStore()
 	if (to.meta.requiresAuth && !store.isAuthenticated) {
-		next({ name: 'SignIn' });
-	} else next();
-});
+		next({ name: 'SignIn' })
+	} else next()
+})

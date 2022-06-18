@@ -8,7 +8,7 @@
 <template>
 	<ul class="flex flex-row items-center space-x-5 list-none" v-if="store.user">
 		<li  class="decoration-none">
-			<NavLink :href="'/profile'"> Mi perfíl</NavLink>
+			<nav-link :href="'/profile'"> Mi perfíl</nav-link>
 		</li>
 		<li  class="decoration-none">
 			<button
