@@ -6,7 +6,7 @@ import { ref } from 'vue';
 
 	import FormField from '@/components/Form/FormField.vue';
 	import Hero from '@/components/Hero/index.vue';
-	import Button from '@/components/Button/index.vue';
+import FormButton from '@/components/form/FormButton.vue';
 
 	import { taskSchema } from '@/utils/zod';
 	import {useTaskStore} from '@/store/task'
@@ -32,28 +32,28 @@ import { computed } from '@vue/reactivity';
 <template>
 	<Hero>
 		<form @submit="onSubmit">
-			<FormField
+			<form-field
 				:error="errors.title"
 				:type="'text'"
 				:label="'Titulo de tarea'"
 				:placeholder="'Por ej... Mi primer tarea'"
 				:name="'title'"
 			/>
-			<FormField
+			<form-field
 				:error="errors.description"
 				:type="'text'"
 				:label="'Descripción de la tarea'"
 				:placeholder="'Por ej... la descripción de mi tarea'"
 				:name="'description'"
 			/>
-			<FormField
+			<form-field
 				:error="errors.priority"
 				:type="'text'"
 				:label="'Prioridad de la tarea'"
 				:placeholder="'Por ej... Mi primer tarea'"
 				:name="'priority'"
 			/>
-			<Button :disabled="isSubmitting">Modificar tarea</Button>
+			<form-button :disabled="isSubmitting">Modificar tarea</form-button>
 		</form>
 	</Hero>
 </template>

@@ -4,7 +4,7 @@
 	import FormField from '@/components/Form/FormField.vue';
 	import FormTextArea from '@/components/Form/FormTextArea.vue';
 
-	import Button from '@/components/Button/index.vue';
+	import FormButton from '@/components/form/FormButton.vue';
 	import { useTaskStore } from '@/store/task';
 
 	import { taskSchema } from '../../utils/zod';
@@ -20,26 +20,26 @@
 
 <template>
 	<form @submit="onSubmit" class="space-y-6">
-		<FormField
+		<form-field
 			:error="errors.title"
 			:type="'text'"
 			:label="'Titulo de tarea'"
 			:placeholder="'Por ej... Mi primer tarea'"
 			:name="'title'"
 		/>
-		<FormTextArea
+		<form-text-area
 			:error="errors.description"
 			:label="'Titulo de tarea'"
 			:placeholder="'Por ej... la descripción de mi tarea'"
 			:name="'description'"
 		/>
-		<FormField
+		<form-field
 			:error="errors.priority"
 			:type="'text'"
 			:label="'Prioridad de la tarea'"
 			:placeholder="'Por ej... Mi primer tarea'"
 			:name="'priority'"
 		/>
-		<Button type="submit" :disabled="isSubmitting">Crear nueva tarea</Button>
+		<form-button type="submit" :disabled="isSubmitting">Crear nueva tarea</form-button>
 	</form>
 </template>

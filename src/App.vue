@@ -1,22 +1,22 @@
 <script setup lang="ts">
-	import { RouterView, useRouter } from 'vue-router';
+	import { RouterView, useRouter } from 'vue-router'
 
-	import Layout from './components/layout/Layout.vue';
-	import { client } from './lib/supabase';
-	import { useAuthStore } from './store/auth';
+	import Layout from './components/layout/Layout.vue'
+	import { client } from './lib/supabase'
+	import { useAuthStore } from './store/auth'
 
-	const router = useRouter();
+	const router = useRouter()
 	client.auth.onAuthStateChange((event, session) => {
 		if (event === 'SIGNED_OUT') {
-			useAuthStore().user = null;
-			router.push('/');
+			useAuthStore().user = null
+			router.push('/')
 		}
 
 		if (event === 'SIGNED_IN' && session) {
-			useAuthStore().user = session?.user;
-			router.push('/dashboard');
+			useAuthStore().user = session?.user
+			router.push('/dashboard')
 		}
-	});
+	})
 </script>
 
 <template>
