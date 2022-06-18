@@ -17,11 +17,11 @@ $  npm run dev
 
 Gixny uses the following technologies:
 
-    * [Vue.js](https://vuejs.org/)
-    * [Vite] (https://vitejs.dev/)
-    * [Vue-Router] (https://router.vuejs.org/)
-    * [Pinia] (https://pinia.js.org/)
-    * [Vee-validate](https://vee-validate.logaretm.com/v4/)
-    * [Zod](https://github.com/colinhacks/zod)
-    * [UnoCSS](https://uno.antfu.me/) 
-    * [Supabase](https://supabase.com/)
+  - [Vue.js](https://vuejs.org/)
+  - [Vite] (https://vitejs.dev/)
+  - [Vue-Router] (https://router.vuejs.org/)
+  - [Pinia] (https://pinia.js.org/)
+  - [Vee-validate](https://vee-validate.logaretm.com/v4/)
+  - [Zod](https://github.com/colinhacks/zod)
+  - [UnoCSS](https://uno.antfu.me/) 
+  - [Supabase](https://supabase.com/)
