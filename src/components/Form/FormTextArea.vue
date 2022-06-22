@@ -1,66 +1,34 @@
 <script setup lang="ts">
-	import { useField } from 'vee-validate';
-	import type { Credentials, TaskFormFields } from '../../types';
-
-	type InputName =  keyof TaskFormFields;
+	import { useField } from 'vee-validate'
+	import { z } from 'zod'
+	import { taskSchema } from '@/utils/zod'
+	type ZodTaskRegister = typeof taskSchema.shape
+	type InputName = keyof ZodTaskRegister
 
 	interface FormFieldProps {
-		label: string;
-		name: InputName;
+		label: string
+		name: InputName
 
-		placeholder: string;
-		error?: string | undefined;
+		placeholder: string
+		error?: string | undefined
 	}
-	const { error, label, name, placeholder } = defineProps<FormFieldProps>();
-	const { value, meta } = useField(name);
+	const { error, label, name, placeholder } = defineProps<FormFieldProps>()
+	const { value, meta } = useField<string>(name)
 </script>
 
 <template>
-	<aside :class="$style['form-field']">
-		<label :class="$style['form-field__label']">{{ label }}</label>
-		// @ts-ignore
+	<aside class="flex flex-col space-y-5 max-w-6xl">
+		<label class="font-bold">{{ label }}</label>
+
 		<textarea
-			:class="$style['form-field__textarea']"
+			class="px-4 py-2 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg max-w-4xl"
 			:name="name"
 			:placeholder="placeholder"
 			type="text"
 			v-model="value"
 		></textarea>
-		<span
-			:class="$style['form-field__error__label']"
-			v-if="error?.length !== 0 && meta.touched"
-		>
+		<span class="c-red-500 h-12">
 			{{ error }}
 		</span>
 	</aside>
 </template>
-<style module>
-	.form-field {
-		margin-bottom: 1rem;
-	}
-
-	.form-field {
-		margin-bottom: 1rem;
-	}
-	.form-field__label {
-		display: block;
-		margin-bottom: 0.5rem;
-	}
-	.form-field__textarea {
-		display: block;
-		width: 100%;
-		padding: 0.5rem;
-		border: 1px solid #ccc;
-		border-radius: 0.25rem;
-		transition: border-color 0.2s ease-in-out;
-	}
-	.form-field__input:focus {
-		border-color: #000;
-	}
-	.form-field__input:invalid {
-		border-color: #f00;
-	}
-	.form-field__error__label {
-		color: red;
-	}
-</style>

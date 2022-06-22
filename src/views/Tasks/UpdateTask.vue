@@ -1,32 +1,34 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-	import {useRoute,onBeforeRouteUpdate} from 'vue-router'
-	import { useForm } from 'vee-validate';
-	import { toFormValidator } from '@vee-validate/zod';
+	import { useRoute } from 'vue-router'
+	import { useForm } from 'vee-validate'
+	import { computed } from '@vue/reactivity'
+	import { toFormValidator } from '@vee-validate/zod'
+	import { z } from 'zod'
+	import FormField from '@/components/Form/FormField.vue'
+	import Hero from '@/components/Hero/index.vue'
+	import FormButton from '@/components/form/FormButton.vue'
 
-	import FormField from '@/components/Form/FormField.vue';
-	import Hero from '@/components/Hero/index.vue';
-import FormButton from '@/components/form/FormButton.vue';
+	import { useTaskStore } from '@/store/task'
+	import type { Task } from '@/types'
 
-	import { taskSchema } from '@/utils/zod';
-	import {useTaskStore} from '@/store/task'
-	import type { Task, TaskFormFields } from '../../types';
-import { computed } from '@vue/reactivity';
+	import { taskSchema } from '@/utils/zod'
 
-	const store = useTaskStore();
-	const taskParamsId = useRoute().params.id;
+	const store = useTaskStore()
+	const taskParamsId = useRoute().params.id
 
-   const selectedTask = computed(()=> store.tasks.find((task:Task)=>Number(task.id)===Number(taskParamsId)))
+	const selectedTask = computed(() =>
+		store.tasks.find((task: Task) => Number(task.id) === Number(taskParamsId))
+	)
 
-
-	const { errors, handleSubmit, isSubmitting } = useForm<TaskFormFields>({
+	const { errors, handleSubmit, isSubmitting } = useForm<
+		z.infer<typeof taskSchema>
+	>({
 		validationSchema: toFormValidator(taskSchema),
-		initialValues:selectedTask.value
-		
-	});
-	const onSubmit = handleSubmit(async(values) => {
-	await store.updateTask(Number(taskParamsId),values);
-	});
+		initialValues: selectedTask.value,
+	})
+	const onSubmit = handleSubmit(async (values) => {
+		await store.updateTask(Number(taskParamsId), values)
+	})
 </script>
 
 <template>
