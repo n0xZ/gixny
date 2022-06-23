@@ -13,8 +13,8 @@
 		}
 
 		if (event === 'SIGNED_IN' && session) {
-			useAuthStore().user = session?.user
 			router.push('/dashboard')
+			useAuthStore().user = session?.user
 		}
 	})
 </script>
@@ -28,9 +28,9 @@
 			leave-active-class="duration-200 ease-in"
 			leave-from-class="opacity-100"
 			leave-to-class="transform opacity-0"
-			><Layout :route="route">
+			><layout :route="route">
 				<component :is="Component" />
-			</Layout>
+			</layout>
 		</transition>
 	</router-view>
 </template>
