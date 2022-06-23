@@ -33,10 +33,13 @@ export const useAuthStore = defineStore('User', {
 			}
 		},
 		async signUp(values: z.infer<typeof registerValidator>) {
-			const { error, user } = await client.auth.signUp({
-				email: values.email,
-				password: values.password,
-			})
+			const { error, user } = await client.auth.signUp(
+				{
+					email: values.email,
+					password: values.password,
+				},
+				{ data: { username: values.username } }
+			)
 			if (user && !error) {
 				this.user = user
 			}

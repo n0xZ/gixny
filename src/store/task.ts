@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 import { taskSchema } from '@/utils/zod'
 import { client } from '@/lib/supabase'
-import { Task } from '../types'
+import { Task } from '@/types'
 
 export const useTaskStore = defineStore('Task', {
 	state: () => {

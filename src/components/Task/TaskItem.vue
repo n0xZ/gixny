@@ -12,25 +12,25 @@
 
 <template>
 	<aside
-		class="relative flex flex-col h-28 w-128 rounded-xl border-2 border-gray-500 p-3 overflow-hidden bg-green-500"
+		class="relative flex flex-col h-28 w-72 rounded-lg p-3 overflow-hidden bg-green-400"
 	>
 		<span class="w-full flex flex-row justify-between items-center">
 			<h2 class="font-bold">{{ task.title }}</h2>
-			<div class="flex flex-row items-center space-x-5">
+			<div class="flex flex-row items-center space-x-3">
 				<button
 					@click="store.deleteTask(Number(task.id))"
-					class="i-carbon-close text-xl"
+					class="i-carbon-close h-6 w-6"
 				>
 					Eliminar tarea
 				</button>
 				<router-link
 					:to="`/dashboard/tasks/update/${task.id}`"
-					class="i-carbon-magic-wand"
+					class="i-carbon-magic-wand h-6 w-6"
 				/>
 			</div>
 		</span>
 
 		<p>{{ task.description }}</p>
-		<p class="rounded-xl px-5 py-3 bg-red-300">{{ task.priority }}</p>
+		<p class=" bg-red-500">{{ task.priority }}</p>
 	</aside>
 </template>

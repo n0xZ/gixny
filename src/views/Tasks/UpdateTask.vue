@@ -4,14 +4,13 @@
 	import { computed } from '@vue/reactivity'
 	import { toFormValidator } from '@vee-validate/zod'
 	import { z } from 'zod'
+
 	import FormField from '@/components/Form/FormField.vue'
 	import Hero from '@/components/Hero/index.vue'
 	import FormButton from '@/components/form/FormButton.vue'
-
 	import { useTaskStore } from '@/store/task'
-	import type { Task } from '@/types'
-
 	import { taskSchema } from '@/utils/zod'
+	import type { Task } from '@/types'
 
 	const store = useTaskStore()
 	const taskParamsId = useRoute().params.id

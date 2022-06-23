@@ -2,8 +2,8 @@
 	import { RouterView, useRouter } from 'vue-router'
 
 	import Layout from './components/layout/Layout.vue'
-	import { client } from './lib/supabase'
-	import { useAuthStore } from './store/auth'
+	import { client } from '@/lib/supabase'
+	import { useAuthStore } from '@/store/auth'
 
 	const router = useRouter()
 	client.auth.onAuthStateChange((event, session) => {

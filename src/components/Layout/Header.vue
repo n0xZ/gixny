@@ -13,8 +13,8 @@
 			<h1 v-if="!store.isAuthenticated">
 				<NavLink :href="'/'">Home</NavLink>
 			</h1>
-			<h1 v-if="store.isAuthenticated">
-				<NavLink :href="'/dashboard'">Home</NavLink>
+			<h1 v-if="store.isAuthenticated" class="i-carbon-home">
+				<NavLink :href="'/dashboard'"></NavLink>
 			</h1>
 			<Public />
 			<Private />
