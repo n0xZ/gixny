@@ -1,13 +1,13 @@
-import * as path from 'path';
-import { defineConfig } from 'vitest/config';
-import vue from '@vitejs/plugin-vue';
-import Unocss from 'unocss/vite';
-import { presetUno } from '@unocss/preset-uno';
-import presetWebFonts from '@unocss/preset-web-fonts';
-
+import * as path from 'path'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import Unocss from 'unocss/vite'
+import { presetUno } from '@unocss/preset-uno'
+import presetWebFonts from '@unocss/preset-web-fonts'
+import presetIcons from '@unocss/preset-icons'
 // https://vitejs.dev/config/
 export default defineConfig({
-	test: { globals: true, environment: 'jsdom' },
+	// test: { globals: true, environment: 'jsdom' },
 	plugins: [
 		vue(),
 		Unocss({
@@ -22,6 +22,7 @@ export default defineConfig({
 						barlow: 'Barlow',
 					},
 				}),
+				presetIcons(),
 			],
 		}),
 	],
@@ -30,4 +31,4 @@ export default defineConfig({
 			'@': path.resolve(__dirname, 'src'),
 		},
 	},
-});
+})
