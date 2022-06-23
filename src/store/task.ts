@@ -1,6 +1,9 @@
 import { defineStore } from 'pinia'
+import { z } from 'zod'
+
+import { taskSchema } from '@/utils/zod'
 import { client } from '@/lib/supabase'
-import { Task, TaskFormFields } from '../types'
+import { Task } from '../types'
 
 export const useTaskStore = defineStore('Task', {
 	state: () => {
@@ -26,7 +29,7 @@ export const useTaskStore = defineStore('Task', {
 			}
 			this.tasks = tasks!
 		},
-		async createTask(values: TaskFormFields) {
+		async createTask(values: z.infer<typeof taskSchema>) {
 			const {
 				data: tasks,
 				status,
@@ -52,7 +55,7 @@ export const useTaskStore = defineStore('Task', {
 			}
 			this.tasks = tasks!
 		},
-		async updateTask(id: number, values: TaskFormFields) {
+		async updateTask(id: number, values: z.infer<typeof taskSchema>) {
 			const {
 				data: tasks,
 				status,
