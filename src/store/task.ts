@@ -22,6 +22,7 @@ export const useTaskStore = defineStore('Task', {
 				status,
 				error,
 			} = await client.from('task').select('*').order('id')
+
 			if (error && status !== 200) throw new Error(error.message)
 
 			if (tasks === null) {

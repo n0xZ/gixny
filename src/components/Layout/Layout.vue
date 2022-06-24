@@ -11,7 +11,7 @@
 <template>
 	<div :key="route.name!">
 		<Header />
-		<main class="min-h-screen mt-6 container mx-auto max-w-5xl">
+		<main class="min-h-screen">
 			<slot></slot>
 		</main>
 		<footer

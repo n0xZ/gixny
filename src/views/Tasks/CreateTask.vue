@@ -2,10 +2,11 @@
 	import { useForm } from 'vee-validate'
 	import { toFormValidator } from '@vee-validate/zod'
 	import { z } from 'zod'
+
 	import FormField from '@/components/Form/FormField.vue'
 	import FormTextArea from '@/components/Form/FormTextArea.vue'
-
 	import FormButton from '@/components/form/FormButton.vue'
+
 	import { useTaskStore } from '@/store/task'
 	import { taskSchema } from '@/utils/zod'
 

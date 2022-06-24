@@ -1,21 +1,28 @@
 <script setup lang="ts">
-	import NavLink from '../navlink/index.vue';
-	import Public from '../navitem/Public.vue';
-	import Private from '../navitem/Private.vue';
-	import { useAuthStore } from '@/store/auth';
-
-	const store = useAuthStore();
+	import NavLink from '../navlink/index.vue'
+	import Public from '../navitem/Public.vue'
+	import Private from '../navitem/Private.vue'
+	import { useAuthStore } from '@/store/auth'
+	const store = useAuthStore()
 </script>
 
 <template>
-	<header class="p-5 container mx-auto">
-		<nav class="flex flex-row items-center justify-between c-gray-900 font-bold">
+	<header class="p-5 container mx-auto relative">
+		<nav
+			class="flex flex-row items-center justify-between c-gray-900 font-bold"
+		>
 			<h1 v-if="!store.isAuthenticated">
 				<NavLink :href="'/'">Home</NavLink>
 			</h1>
-			<h1 v-if="store.isAuthenticated" class="i-carbon-home">
-				<NavLink :href="'/dashboard'"></NavLink>
-			</h1>
+
+			<router-link
+				to="/dashboard"
+				class="flex flex-row items-center space-x-3"
+				v-if="store.isAuthenticated"
+			>
+				<div class="i-carbon-home h-6 w-6"></div>
+				<span>Home</span>
+			</router-link>
 			<Public />
 			<Private />
 		</nav>
