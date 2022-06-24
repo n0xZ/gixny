@@ -1,10 +1,11 @@
 <script setup lang="ts">
-	import { onMounted, ref } from 'vue'
+	import { onBeforeMount, ref } from 'vue'
+	import { useAsyncState } from '@vueuse/core'
 	import TaskList from '@/components/Task/TaskList.vue'
 	import { useTaskStore } from '@/store/task'
 	const store = useTaskStore()
 	const loading = ref<boolean>(true)
-	onMounted(() =>
+	onBeforeMount(() =>
 		store.fetchTasks().then(() => (loading.value = !loading.value))
 	)
 </script>
@@ -12,7 +13,7 @@
 <template>
 	<p v-if="loading">Cargando...</p>
 	<section class="grid grid-cols-3" v-if="store.tasks.length !== 0 && !loading">
-		<TaskList :tasks="store.tasks" />
+		<TaskList :tasks="store.getActiveTasks" />
 	</section>
 	<router-link
 		v-if="!loading"

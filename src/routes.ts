@@ -31,34 +31,36 @@ export const router = createRouter({
 		},
 		{
 			path: '/dashboard',
-
+			children: [
+				{
+					path: 'tasks/create',
+					component: () => import('./views/tasks/CreateTask.vue'),
+					meta: {
+						requiresAuth: true,
+					},
+				},
+				{
+					path: 'tasks/view',
+					component: () => import('./views/tasks/ViewTasks.vue'),
+					meta: {
+						requiresAuth: true,
+					},
+				},
+				{
+					path: 'tasks/update/:id',
+					component: () => import('./views/tasks/UpdateTask.vue'),
+					meta: {
+						requiresAuth: true,
+					},
+				},
+			],
 			component: () => import('./views/Dashboard.vue'),
 
 			meta: {
 				requiresAuth: true,
 			},
 		},
-		{
-			path: '/dashboard/tasks/create',
-			component: () => import('./views/tasks/CreateTask.vue'),
-			meta: {
-				requiresAuth: true,
-			},
-		},
-		{
-			path: '/dashboard/tasks/view',
-			component: () => import('./views/tasks/ViewTasks.vue'),
-			meta: {
-				requiresAuth: true,
-			},
-		},
-		{
-			path: '/dashboard/tasks/update/:id',
-			component: () => import('./views/tasks/UpdateTask.vue'),
-			meta: {
-				requiresAuth: true,
-			},
-		},
+
 		{
 			path: '/profile',
 			name: 'Profile',
