@@ -16,12 +16,16 @@ export const useTaskStore = defineStore('Task', {
 		getFinishedTasks: (state) => state.tasks.filter((task) => task.isFinished),
 	},
 	actions: {
-		async fetchTasks() {
+		async fetchTasks(userId: string) {
 			const {
 				data: tasks,
 				status,
 				error,
-			} = await client.from('task').select('*').order('id')
+			} = await client
+				.from('task')
+				.select('*')
+				.order('id')
+				.match({ userId: userId })
 
 			if (error && status !== 200) throw new Error(error.message)
 
@@ -30,12 +34,13 @@ export const useTaskStore = defineStore('Task', {
 			}
 			this.tasks = tasks!
 		},
-		async createTask(values: z.infer<typeof taskSchema>) {
+		async createTask(values: z.infer<typeof taskSchema>, userId: string) {
+			const insertedValues = { ...values, userId }
 			const {
 				data: tasks,
 				status,
 				error,
-			} = await client.from('task').insert([values])
+			} = await client.from('task').insert([insertedValues])
 			if (error && status !== 200) throw new Error(error.message)
 
 			if (tasks === null) {

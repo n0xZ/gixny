@@ -1,7 +1,7 @@
 <script setup lang="ts">
 	import { useTitle } from '@vueuse/core'
 
-	import { RouterLink, RouterView } from 'vue-router'
+	import { RouterView } from 'vue-router'
 	import DashboardLayout from '@/components/layout/DashboardLayout.vue'
 	const title = useTitle()
 
@@ -9,11 +9,9 @@
 </script>
 
 <template>
-	<dashboard-layout />
-
-	<section class="container mx-auto">
+	<dashboard-layout>
 		<router-view v-slot="{ Component }">
 			<component :is="Component" />
 		</router-view>
-	</section>
+	</dashboard-layout>
 </template>

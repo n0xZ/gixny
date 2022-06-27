@@ -8,21 +8,23 @@
 	import FormButton from '@/components/form/FormButton.vue'
 
 	import { useTaskStore } from '@/store/task'
+	import { useAuthStore } from '@/store/auth'
 	import { taskSchema } from '@/utils/zod'
 
 	const store = useTaskStore()
+	const authStore = useAuthStore()
 	const { errors, handleSubmit, isSubmitting } = useForm<
 		z.infer<typeof taskSchema>
 	>({
 		validationSchema: toFormValidator(taskSchema),
 	})
 	const onSubmit = handleSubmit(async (values) => {
-		await store.createTask(values)
+		await store.createTask(values, authStore.getUserId!)
 	})
 </script>
 
 <template>
-	<form @submit="onSubmit" class="space-y-6">
+	<form @submit="onSubmit" class="space-y-6 p-3 w-6xl container mx-auto grid place-items-center">
 		<form-field
 			:error="errors.title"
 			:type="'text'"

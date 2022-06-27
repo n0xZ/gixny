@@ -3,17 +3,24 @@
 	import { useAsyncState } from '@vueuse/core'
 	import TaskList from '@/components/Task/TaskList.vue'
 	import { useTaskStore } from '@/store/task'
+	import { useAuthStore } from '@/store/auth'
 	const store = useTaskStore()
+	const authStore = useAuthStore()
 	const loading = ref<boolean>(true)
 	onBeforeMount(() =>
-		store.fetchTasks().then(() => (loading.value = !loading.value))
+		store
+			.fetchTasks(authStore.getUserId!)
+			.then(() => (loading.value = !loading.value))
 	)
 </script>
 
 <template>
 	<p v-if="loading">Cargando...</p>
-	<section class="grid grid-cols-3" v-if="store.tasks.length !== 0 && !loading">
-		<TaskList :tasks="store.getActiveTasks" />
+	<section
+		class="grid grid-cols-3 container mx-auto"
+		v-if="store.tasks.length !== 0 && !loading"
+	>
+		<task-list :tasks="store.getActiveTasks" />
 	</section>
 	<router-link
 		v-if="!loading"
