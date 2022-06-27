@@ -1,11 +1,13 @@
 <script setup lang="ts">
+	import { ref } from 'vue'
 	import { useForm } from 'vee-validate'
 	import { toFormValidator } from '@vee-validate/zod'
 	import { z } from 'zod'
 
 	import FormField from '@/components/Form/FormField.vue'
 	import FormTextArea from '@/components/Form/FormTextArea.vue'
-	import FormButton from '@/components/form/FormButton.vue'
+
+	import TaskCreateDialog from '@/components/task/TaskCreateDialog.vue'
 
 	import { useTaskStore } from '@/store/task'
 	import { useAuthStore } from '@/store/auth'
@@ -13,18 +15,26 @@
 
 	const store = useTaskStore()
 	const authStore = useAuthStore()
-	const { errors, handleSubmit, isSubmitting } = useForm<
+	const isTaskCreatedSuccesfully = ref<boolean>(false)
+	const { errors, handleSubmit, isSubmitting, resetForm } = useForm<
 		z.infer<typeof taskSchema>
 	>({
 		validationSchema: toFormValidator(taskSchema),
 	})
 	const onSubmit = handleSubmit(async (values) => {
-		await store.createTask(values, authStore.getUserId!)
+		const taskCreated = await store.createTask(values, authStore.getUserId!)
+		if (taskCreated) {
+			isTaskCreatedSuccesfully.value = true
+			resetForm()
+		}
 	})
 </script>
 
 <template>
-	<form @submit="onSubmit" class="space-y-6 p-3 w-6xl container mx-auto grid place-items-center">
+	<form
+		@submit="onSubmit"
+		class="space-y-6 p-3 w-6xl container mx-auto flex flex-col"
+	>
 		<form-field
 			:error="errors.title"
 			:type="'text'"
@@ -45,8 +55,9 @@
 			:placeholder="'Por ej... Mi primer tarea'"
 			:name="'priority'"
 		/>
-		<form-button type="submit" :disabled="isSubmitting"
-			>Crear nueva tarea</form-button
-		>
+		<TaskCreateDialog
+			:isSubmitting="isSubmitting"
+			:isTaskCreatedSuccesfully="isTaskCreatedSuccesfully"
+		/>
 	</form>
 </template>

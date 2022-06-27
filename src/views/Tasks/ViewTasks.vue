@@ -1,9 +1,10 @@
 <script setup lang="ts">
 	import { onBeforeMount, ref } from 'vue'
-	import { useAsyncState } from '@vueuse/core'
+
 	import TaskList from '@/components/Task/TaskList.vue'
 	import { useTaskStore } from '@/store/task'
 	import { useAuthStore } from '@/store/auth'
+	import Skeleton from '@/components/loading/Skeleton.vue'
 	const store = useTaskStore()
 	const authStore = useAuthStore()
 	const loading = ref<boolean>(true)
@@ -15,11 +16,13 @@
 </script>
 
 <template>
-	<p v-if="loading">Cargando...</p>
+	<Skeleton v-if="loading" />
 	<section
-		class="grid grid-cols-3 container mx-auto"
+		class="flex flex-col container mx-auto mt-6"
 		v-if="store.tasks.length !== 0 && !loading"
 	>
+		<h2 class="font-bold text-2xl text-center mb-3">Lista de tareas</h2>
+
 		<task-list :tasks="store.getActiveTasks" />
 	</section>
 	<router-link

@@ -12,7 +12,7 @@
 
 <template>
 	<aside
-		class="relative flex flex-col h-28 w-72 rounded-lg p-3 overflow-hidden bg-green-400"
+		class="relative flex flex-col h-28 w-74 rounded-lg p-3 space-y-3 overflow-hidden bg-green-400"
 	>
 		<span class="w-full flex flex-row justify-between items-center">
 			<h2 class="font-bold">{{ task.title }}</h2>

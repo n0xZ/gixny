@@ -59,5 +59,5 @@
 		</form>
 	</article>
 
-	<SignUpSucessful :isLoginSucessful="isSignUpSuccessFul" />
+	<sign-up-sucessful :isLoginSucessful="isSignUpSuccessFul" />
 </template>

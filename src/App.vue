@@ -13,7 +13,7 @@
 		}
 
 		if (event === 'SIGNED_IN' && session) {
-			router.push('/dashboard')
+			router.push('/dashboard/home')
 			useAuthStore().user = session?.user
 		}
 	})

@@ -7,17 +7,17 @@
 </script>
 
 <template>
-	<header class="p-5 container mx-auto relative">
+	<header class="relative bg-zinc-900">
 		<nav
-			class="flex flex-row items-center justify-between c-gray-900 font-bold"
+			class="p-5 flex flex-row items-center container mx-auto justify-between c-gray-300 font-bold"
 		>
 			<h1 v-if="!store.isAuthenticated">
 				<NavLink :href="'/'">Home</NavLink>
 			</h1>
 
 			<router-link
-				to="/dashboard"
-				class="flex flex-row items-center space-x-3"
+				to="/dashboard/home"
+				class="flex flex-row items-center space-x-2"
 				v-if="store.isAuthenticated"
 			>
 				<div class="i-carbon-home h-6 w-6"></div>

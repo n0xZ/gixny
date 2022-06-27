@@ -36,6 +36,7 @@ export const useTaskStore = defineStore('Task', {
 		},
 		async createTask(values: z.infer<typeof taskSchema>, userId: string) {
 			const insertedValues = { ...values, userId }
+			console.log(insertedValues)
 			const {
 				data: tasks,
 				status,
@@ -47,6 +48,7 @@ export const useTaskStore = defineStore('Task', {
 				this.tasks = []
 			}
 			this.tasks = tasks!
+			return this.tasks
 		},
 		async deleteTask(id: number) {
 			const {

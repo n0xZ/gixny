@@ -9,6 +9,6 @@
 
 <template>
 	<article v-for="task in props.tasks" class="grid grid-rows-2 gap-6">
-		<TaskItem :task="task" />
+		<task-item :task="task" />
 	</article>
 </template>
