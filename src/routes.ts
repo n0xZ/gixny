@@ -33,6 +33,13 @@ export const router = createRouter({
 			path: '/dashboard',
 			children: [
 				{
+					path: 'home',
+					component: () => import('./views/DashboardHome.vue'),
+					meta: {
+						requiresAuth: true,
+					},
+				},
+				{
 					path: 'tasks/create',
 					component: () => import('./views/tasks/CreateTask.vue'),
 					meta: {
@@ -53,18 +60,16 @@ export const router = createRouter({
 						requiresAuth: true,
 					},
 				},
+				{
+					path: 'profile',
+					component: () => import('./views/Profile.vue'),
+					meta: {
+						requiresAuth: true,
+					},
+				},
 			],
 			component: () => import('./views/Dashboard.vue'),
 
-			meta: {
-				requiresAuth: true,
-			},
-		},
-
-		{
-			path: '/profile',
-			name: 'Profile',
-			component: () => import('./views/Profile.vue'),
 			meta: {
 				requiresAuth: true,
 			},
